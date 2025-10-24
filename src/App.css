@@ -1,38 +1,110 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* ---------- Main Layout ---------- */
+.main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  padding: 40px 20px;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+/* Heading */
+.todo-heading {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+}
+
+/* Input Section */
+.input-div {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 12px;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 28px;
 }
 
-.App-link {
-  color: #61dafb;
+.input-ele {
+  flex-grow: 1;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
+  color: #0f172a;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.input-ele:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Add & Save Buttons */
+.add-button,
+.save-button {
+  background-color: #2563eb; /* consistent primary blue */
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.add-button:hover,
+.save-button:hover {
+  background-color: #1e40af; /* darker blue on hover */
+  transform: translateY(-1px);
+}
+
+/* Todo List Container */
+.todos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+/* Save Button Section */
+.save-button-div {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* ---------- Responsive Design ---------- */
+@media screen and (max-width: 600px) {
+  .input-div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    text-align: center;
   }
-  to {
-    transform: rotate(360deg);
+
+  .add-button {
+    width: 20%;
+    margin:auto;
+    
+  }
+
+  .todos-container {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .todo-heading {
+    font-size: 26px;
   }
 }
