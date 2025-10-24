@@ -28,6 +28,7 @@ const TodoItem = (props) => {
           onChange={onChangeStatus}
           className="input-element"
           type="checkbox"
+          checked={status === "completed"}
         />
         <p className={`title-para ${lineStyle}`}>{title}</p>
       </div>

@@ -9,6 +9,21 @@ const App = () => {
 
   const [inputValue, setInputValue] = useState("");
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const reponse = await fetch(
+          "https://to-do-app-flg5.onrender.com/api/tasks"
+        );
+        const data = await reponse.json();
+        updateTodoList(data);
+      } catch (e) {
+        console.log("Error fetching data", e);
+      }
+    };
+    fetchData();
+  }, []);
+
   const onEnterInput = (event) => {
     setInputValue(event.target.value);
   };
@@ -32,6 +47,25 @@ const App = () => {
       return eachTodo;
     });
     updateTodoList(updatedTodoList);
+  };
+
+  const onSave = async () => {
+    try {
+      const response = await fetch(
+        "https://to-do-app-flg5.onrender.com/api/tasks",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(todoList),
+        }
+      );
+      const data = await response.json();
+      console.log("Data saved successfully:", data);
+    } catch (e) {
+      console.log("Error saving data", e);
+    }
   };
 
   const onDeleteTodo = (id) => {
@@ -63,7 +97,7 @@ const App = () => {
         ))}
       </div>
       <div className="save-button-div">
-        <button type="button" className="save-button">
+        <button onClick={onSave} type="button" className="save-button">
           Save
         </button>
       </div>
